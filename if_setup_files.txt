@@ -1,0 +1,32 @@
+The `EBUSY` error indicates that a file or directory is being used by another process, preventing `npm` from renaming or modifying it. This can happen for several reasons. Here are some steps you can take to resolve this issue:
+
+1. **Close Other Applications:**
+   - Ensure that no other applications are using the files in your project directory. This includes text editors, file explorers, or any other processes that might be accessing the `node_modules` directory.
+
+2. **Restart Your Computer:**
+   - Sometimes, a simple restart can release any locks held by processes that are no longer running.
+
+3. **Delete `node_modules` and Retry:**
+   - Manually delete the `node_modules` directory and the `package-lock.json` file, then try running `npm install` again:
+     ```batch
+     rd /s /q node_modules
+     del package-lock.json
+     npm install
+     ```
+
+4. **Check for Antivirus or Backup Software:**
+   - Ensure that antivirus or backup software is not scanning or locking files in your project directory. Temporarily disable these programs and try again.
+
+5. **Use a Different Terminal:**
+   - Try running the script in a different terminal or command prompt, such as PowerShell or an elevated Command Prompt (Run as Administrator).
+
+6. **Check for Background Processes:**
+   - Use the Task Manager to check for any background processes that might be using the files and end them if necessary.
+
+7. **Run npm Cache Clean:**
+   - Clear the npm cache to ensure there are no corrupted files:
+     ```batch
+     npm cache clean --force
+     ```
+
+If none of these steps resolve the issue, you may need to investigate further by checking the detailed npm logs located at the path specified in the error message. This can provide more insight into what might be causing the problem.
